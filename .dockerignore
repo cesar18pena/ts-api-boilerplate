@@ -1,0 +1,8 @@
+.dockerignore
+.git
+.gitignore
+.vscode
+coverage
+docker-compose*
+Dockerfile*
+node_modules
