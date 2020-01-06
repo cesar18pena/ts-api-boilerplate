@@ -1,13 +1,11 @@
 version: 2
 
-general:
-  artifacts:
-    - coverage
 jobs:
   build:
-    working_directory: ~/repo
     docker:
-      - image: stable
+      - image: docker:19.03.5-git
+    working_directory: ~/repo
+    parallelism: 4
     steps:
       - checkout
       # Download and cache dependencies
@@ -21,6 +19,6 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      # run tests and send to coveralls
+      # run tests
       - run: npm run build
-      - run: npm run coveralls
+      - run: npm run test
