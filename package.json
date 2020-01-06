@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run lint && tsc",
+    "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls",
     "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}'",
     "lint:quiet": "npm run lint -- --quiet",
     "prettier:base": "prettier --parser typescript --single-quote",
@@ -12,7 +13,8 @@
     "prettier:write": "npm run prettier:base -- --write \"src/**/*.{js,ts}\"",
     "start": "node -r dotenv/config dist/index.js",
     "start:dev": "nodemon",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "keywords": [],
   "author": "",
@@ -22,16 +24,22 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
+    "@types/jest": "^24.0.25",
     "@typescript-eslint/eslint-plugin": "^2.14.0",
     "@typescript-eslint/parser": "^2.14.0",
+    "coveralls": "^3.0.9",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-jest": "^23.3.0",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^3.1.0",
+    "jest": "^24.9.0",
     "lint-staged": "^9.5.0",
     "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
+    "supertest": "^4.0.2",
+    "ts-jest": "^24.2.0",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.4"
   }
