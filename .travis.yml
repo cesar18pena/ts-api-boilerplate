@@ -8,3 +8,6 @@ before_install:
 
 script:
   - docker run -e CI=true cesar18pena/ts-boilerplate-api npm run test
+
+after_script:
+  - docker run -e CI=true cesar18pena/ts-boilerplate-api npm run coveralls
