@@ -1,0 +1,25 @@
+version: 2
+general:
+  artifacts:
+    - coverage
+jobs:
+  build:
+    working_directory: ~/repo
+    docker:
+      - image: stable
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      # run tests and send to coveralls
+      - run: npm run build
+      - run: npm run coveralls

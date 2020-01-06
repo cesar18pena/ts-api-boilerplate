@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t cesar18pena/ts-boilerplate-api -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true cesar18pena/ts-boilerplate-api npm run test
