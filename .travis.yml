@@ -1,4 +1,6 @@
-sudo: required
+os: linux
+
+language: ruby
 
 services:
   - docker
@@ -9,5 +11,5 @@ before_install:
 script:
   - docker run -e CI=true cesar18pena/ts-boilerplate-api npm run test
 
-after_script:
+after_success:
   - docker run -e CI=true cesar18pena/ts-boilerplate-api npm run coveralls
