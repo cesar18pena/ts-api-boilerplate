@@ -1,6 +1,11 @@
 module.exports = {
   collectCoverage: true,
-  coveragePathIgnorePatterns: ['./node_modules/'],
+  collectCoverageFrom: [
+    '**/*.{ts,js}',
+    '!**/node_modules/**',
+    '!**/coverage/**',
+    '!jest.config.js',
+  ],
   moduleFileExtensions: ['ts', 'js'],
   transform: {
     '\\.(ts)$': 'ts-jest',
