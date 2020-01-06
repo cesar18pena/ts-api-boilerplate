@@ -5,6 +5,9 @@ language: ruby
 services:
   - docker
 
+notifications:
+  email: false
+
 before_install:
   - docker build -t cesar18pena/ts-boilerplate-api -f Dockerfile.dev .
 
