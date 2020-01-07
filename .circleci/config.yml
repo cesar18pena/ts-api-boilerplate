@@ -30,4 +30,5 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests
-      - run: npm run test
+      - run: docker run cesar18pena/ts-boilerplate-api npm run lint
+      - run: docker run cesar18pena/ts-boilerplate-api npm run test
