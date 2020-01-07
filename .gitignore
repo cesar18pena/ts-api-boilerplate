@@ -15,3 +15,7 @@ node_modules
 
 # Ignore coverage files of testing
 coverage
+
+# Ignore Error logs
+error.log
+combined.log
