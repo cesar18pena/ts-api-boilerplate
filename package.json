@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run lint && tsc",
-    "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "lint": "tsc --noEmit && eslint '*/**/*.{js,ts}'",
     "lint:quiet": "npm run lint -- --quiet",
     "prettier:base": "prettier --parser typescript --single-quote",
