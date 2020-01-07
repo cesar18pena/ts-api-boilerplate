@@ -3,9 +3,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:8,
+      # specify the version you desire here
+      - image: circleci/node:8
+
     working_directory: ~/repo
+
     parallelism: 4
+
     steps:
       - checkout
       # Download and cache dependencies
@@ -14,11 +18,15 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
+
       - run: docker build -t cesar18pena/ts-boilerplate-api -f Dockerfile.dev .
+
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+
       # run tests
+      - run: npm run lint
       - run: npm run build
       - run: npm run test
